@@ -1,5 +1,5 @@
-#ifndef __DEFINED_CUSTOMER_H
-#define __DEFINED_CUSTOMER_H
+#ifndef CUSTOMER_H
+#define CUSTOMER_H
 
 #include <string>
 #include <iostream>
@@ -85,4 +85,4 @@ public:
     }
 }
 
-#endif // ifndef __DEFINED_CUSTOMER_H
+#endif // ifndef CUSTOMER_H
