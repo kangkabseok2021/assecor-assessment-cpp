@@ -3,7 +3,9 @@
 
 #include <string>
 #include <iostream>
+#include <limits>
 #include <map>
+#include <vector>
 
 
 #define	COLOR_BLUE      1
@@ -25,24 +27,14 @@ struct _CUSTOMER {
 
 typedef struct _CUSTOMER CUSTOMER;
 
-enum class Color {
-    BLUE = 1,
-    GREEN = 2,
-    VIOLET = 3,
-    RED = 4,
-    YELLOW = 5,
-    TURQUOISE = 6,
-    WHITE = 7
-};
-
-const std::map<Color, std::string> ColorNames = {
-    {Color::BLUE, "Blue"},
-    {Color::GREEN, "Green"},
-    {Color::VIOLET, "Violet"},
-    {Color::RED, "Red"},
-    {Color::YELLOW, "Yellow"},
-    {Color::TURQUOISE, "Turquoise"},
-    {Color::WHITE, "White"}
+const std::map<int, std::string> ColorNames = {
+    {COLOR_BLUE, "Blue"},
+    {COLOR_GREEN, "Green"},
+    {COLOR_VIOLET, "Violet"},
+    {COLOR_RED, "Red"},
+    {COLOR_YELLOW, "Yellow"},
+    {COLOR_TURQUOISE, "Turquoise"},
+    {COLOR_WHITE, "White"}
 };
 
 class Customer {
@@ -53,16 +45,16 @@ private:
     std::string last_name_; 
     std::string zip_code_;
     std::string city_;
-    Color favorite_color_;
+    int favorite_color_;
 
 public:
     // Constructor
     Customer(int id, const std::string& first_name, const std::string& last_name,
-             const std::string& zip_code, const std::string& city, Color favorite_color);
+             const std::string& zip_code, const std::string& city, int favorite_color);
 
     // Default Constructor
     Customer() : id_(0), first_name_(""), last_name_(""),
-                 zip_code_(""), city_(""), favorite_color_(Color::WHITE) {}
+                 zip_code_(""), city_(""), favorite_color_(COLOR_WHITE) {}
     
     // Getter methods
     int getId() const { return id_; }
@@ -70,7 +62,7 @@ public:
     std::string getLastName() const { return last_name_; }
     std::string getZipCode() const { return zip_code_; }
     std::string getCity() const { return city_; }
-    Color getFavoriteColor() const { return favorite_color_; }
+    int getFavoriteColor() const { return favorite_color_; }
 
     // Method to display customer information
     void displayInfo() const;
@@ -83,11 +75,12 @@ public:
     // Method to add a customer to the archive
     void addCustomer(const Customer& customer);
     // Method to input a new customer to the archive
-    void newCustomer();
+    void addNewCustomer();
     // Method to display all customers in the archive
     void displayAllCustomers() const;
     // Method to display a customer by ID
     void displayCustomerById(int id) const;
+    void displayCustomerById() const;
 };
 
 #endif // ifndef CUSTOMER_H
