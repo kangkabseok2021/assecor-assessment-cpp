@@ -15,16 +15,14 @@ int main() {
     archive.addCustomer(customer2);
 
     // Display all customers
-    archive.displayAllCustomers();
+    // archive.displayAllCustomers();
 
     // Display a specific customer by ID
-    archive.displayCustomerById(1);
-    archive.displayCustomerById(3);  // Non-existent ID
+    //  archive.displayCustomerById(1);
+    // archive.displayCustomerById(3);  // Non-existent ID
     
-    archive.addNewCustomer();
-    archive.displayAllCustomers();
-
-    // return 0;
+    //  archive.addNewCustomer();
+    //  archive.displayAllCustomers();
 
     int choice;
 
@@ -43,8 +41,6 @@ int main() {
             continue;
         }
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-        std::cout << choice <<std::endl;
 
         switch(choice) {
             case 1:

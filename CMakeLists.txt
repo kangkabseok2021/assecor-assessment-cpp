@@ -29,4 +29,6 @@ add_executable(CustomerData ${SOURCES})
 
 target_link_libraries(CustomerData customer_lib)
 
+enable_testing()
+
 add_subdirectory(test)

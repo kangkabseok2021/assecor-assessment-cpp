@@ -5,8 +5,6 @@
 #include <iostream>
 #include <limits>
 #include <map>
-#include <vector>
-
 
 #define	COLOR_BLUE      1
 #define COLOR_GREEN     2
