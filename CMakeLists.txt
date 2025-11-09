@@ -5,17 +5,28 @@ project(LibraryCustomer)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
+find_package(GTest REQUIRED)
 
 # Include directories
-include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
+# include_directories(
+#     ${CMAKE_CURRENT_SOURCE_DIR}/include
+# )
+
+add_library(customer_lib
+    src/customer.cpp
 )
 
-# Source files
-set(SOURCES
-    src/customer.cpp
-    main.cpp
+target_include_directories(
+    customer_lib
+    PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
+# Source files
+set(SOURCES main.cpp)
 
 # Create executable
 add_executable(CustomerData ${SOURCES})
+
+target_link_libraries(CustomerData customer_lib)
+
+add_subdirectory(test)
