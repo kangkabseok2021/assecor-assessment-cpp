@@ -58,9 +58,7 @@ private:
 public:
     // Constructor
     Customer(int id, const std::string& first_name, const std::string& last_name,
-             const std::string& zip_code, const std::string& city, Color favorite_color)
-        : id_(id), first_name_(first_name), last_name_(last_name),
-          zip_code_(zip_code), city_(city), favorite_color_(favorite_color) {}
+             const std::string& zip_code, const std::string& city, Color favorite_color);
 
     // Default Constructor
     Customer() : id_(0), first_name_(""), last_name_(""),
@@ -75,14 +73,21 @@ public:
     Color getFavoriteColor() const { return favorite_color_; }
 
     // Method to display customer information
-    void displayInfo() const {
-        std::cout << "Customer ID: " << id_ << "\n"
-                  << "First Name: " << first_name_ << "\n"
-                  << "Last Name: " << last_name_ << "\n"
-                  << "Zip Code: " << zip_code_ << "\n"
-                  << "City: " << city_ << "\n"
-                  << "Favorite Color: " << ColorNames[favorite_color_] << "\n";
-    }
-}
+    void displayInfo() const;
+};
+
+class CustomerArchive { 
+private:
+    std::map<int, Customer> customers_;
+public:
+    // Method to add a customer to the archive
+    void addCustomer(const Customer& customer);
+    // Method to input a new customer to the archive
+    void newCustomer();
+    // Method to display all customers in the archive
+    void displayAllCustomers() const;
+    // Method to display a customer by ID
+    void displayCustomerById(int id) const;
+};
 
 #endif // ifndef CUSTOMER_H

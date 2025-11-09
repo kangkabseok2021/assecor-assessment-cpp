@@ -1,36 +1,25 @@
-#include "ScratchDetector.h"
-#include "ImageLoader.h"
+#include "customer.h"
 #include <iostream>
 
 int main() {
-    std::cout << "=== Testing Image Loader ===" << std::endl;
-    
-    ImageLoader loader;
-    
-    // TODO 2.4: Test loading a single image
-    // 1. Create a test image or download one
-    // 2. Try to load it
-    cv::Mat image = loader.loadImage("../test_images/cards.png");
-    
-    // 3. Check if it's valid
-    if (!loader.isValidImage(image)) {
-        std::cerr << "Invalid image." << std::endl;
-        return -1;
-    }
-    std::cout << "Image loaded and validated successfully." << std::endl;
-    
-    ScratchDetector* scratchDetector = new ScratchDetector();
+    std::cout << "=== Testing Customer Archive ===" << std::endl;
 
-    std::vector<Scratch> scratches = scratchDetector->detect(image);
+    CustomerArchive archive;
 
-    std::cout<< "Number of scratches: "<< scratches.size() <<std::endl;
+    // Create some test customers
+    Customer customer1(1, "John", "Doe", "12345", "New York", Color::BLUE);
+    Customer customer2(2, "Jane", "Smith", "67890", "Los Angeles", Color::GREEN);
 
-    cv::Mat edgeImage = scratchDetector->getEdgeImage();
-    // 4. Display it using cv::imshow()
-    cv::imshow("Test Image", edgeImage);
-    // 5. Wait for key press with cv::waitKey()
-    cv::waitKey(0);
-    
-    std::cout << "Test complete!" << std::endl;
+    // Add customers to the archive
+    archive.addCustomer(customer1);
+    archive.addCustomer(customer2);
+
+    // Display all customers
+    archive.displayAllCustomers();
+
+    // Display a specific customer by ID
+    archive.displayCustomerById(1);
+    archive.displayCustomerById(3);  // Non-existent ID
+
     return 0;
-}
+}       
