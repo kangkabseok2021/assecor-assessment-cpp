@@ -34,7 +34,7 @@ int main() {
         std::cout << "0. Exit application" << std::endl;
         std::cout << "Enter your choice ";
 
-        while(!(std::cin >> choice)) {
+        while(!(std::cin >> choice) || choice < 0 || choice > 3) {
             std::cout << "Invalid input. Please enter a number (0-3). " << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

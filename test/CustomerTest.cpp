@@ -85,17 +85,18 @@ protected:
 
 // Test 4: addCustomer - Insertion and Count Check
 TEST_F(CustomerArchiveTest, AddCustomerSuccess) {
-    // Try adding a new customer
+    
     Customer cust3{3, "Eve", "New", "11111", "CityC", COLOR_YELLOW};
     archive_.addCustomer(cust3);
     
-   std::string captured_output = CaptureStdout([this]() {
+    std::string captured_output = CaptureStdout([this]() {
         archive_.displayCustomerById(3);
     });
     EXPECT_NE(captured_output.find("New, Eve"), std::string::npos);
 }
 
-// Test 5: addCustomer - Duplicate ID Check (Ensure the new one *replaces* the old one or is ignored)
+// Test 5: addCustomer - Duplicate ID Check 
+// (Ensure the new one *replaces* the old one or is ignored)
 TEST_F(CustomerArchiveTest, AddCustomerDuplicateId) {
     
     // New customer with the same ID
@@ -130,9 +131,7 @@ TEST_F(CustomerArchiveTest, DisplayCustomerByIdNotFound) {
         archive_.displayCustomerById(non_existent_id);
     });
     
-    // Check that the output indicates the customer was not found (assuming the implementation handles this)
-    // Adjust the EXPECT based on what your displayCustomerById prints when ID is not found.
-    // Assuming it prints an error message or "Customer not found."
+    // Assuming it prints an error message "Customer with ID {id} " not found."
     EXPECT_NE(captured_output.find("not found"), std::string::npos); 
 }
 
@@ -142,7 +141,6 @@ TEST_F(CustomerArchiveTest, DisplayAllCustomersMultiple) {
         archive_.displayAllCustomers();
     });
     
-    // Check that both customers' unique names are present in the output
     EXPECT_NE(captured_output.find("Client, Bob"), std::string::npos);
     EXPECT_NE(captured_output.find("User, Charlie"), std::string::npos);
 }

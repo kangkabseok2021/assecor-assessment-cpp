@@ -1,5 +1,6 @@
 #include "customer.h"
 
+// Customer Constructor
 Customer::Customer(
     int id, const std::string& first_name, const std::string& last_name,
     const std::string& zip_code, const std::string& city, int favorite_color)
@@ -29,6 +30,7 @@ void CustomerArchive::displayAllCustomers() const {
     }
 };
 
+// Method to display a customer by ID
 void CustomerArchive::displayCustomerById(int id) const {
     auto it = customers_.find(id);
     if (it != customers_.end()) {
@@ -38,6 +40,7 @@ void CustomerArchive::displayCustomerById(int id) const {
     }
 };
 
+// Method to input a new customer to the archive from user input
 void CustomerArchive::displayCustomerById() const {
     int id;
     std::cout<< "Enter Customer ID (integer):";
@@ -50,12 +53,12 @@ void CustomerArchive::displayCustomerById() const {
     displayCustomerById(id);
 };
 
+// Method to input a new customer to the archive from user input
 void CustomerArchive::addNewCustomer() {
     int id, color;
     std::string firstname, lastname, zip, city;
     std::cout << "\n=== Add Bew Customer ===" << std::endl;
     std::cout<< "Enter Customer ID (integer):";
-    //std::cin >> id;
     while(!(std::cin >> id)) {
         std::cout << "Invalid input. Please enter an integer ID: ";
         std::cin.clear();
@@ -79,8 +82,7 @@ void CustomerArchive::addNewCustomer() {
 
     std::cout << "Enter Favorite Color Code (1: Blue, 2: GREEN, 3: VIOLET, 4: RED, ";
     std::cout << "5: YELLOW, 6: TURQUOISE, 7: WHITE) :";
-    //std::cin >> color;
-    while(!(std::cin >> color)) {
+    while(!(std::cin >> color) || color < 1 || color > 7) {
         std::cout << "Invalid input. Please enter an integer 1 -- 7: ";
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

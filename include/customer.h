@@ -25,6 +25,7 @@ struct _CUSTOMER {
 
 typedef struct _CUSTOMER CUSTOMER;
 
+// Map for color names
 const std::map<int, std::string> ColorNames = {
     {COLOR_BLUE, "Blue"},
     {COLOR_GREEN, "Green"},
@@ -72,12 +73,13 @@ private:
 public:
     // Method to add a customer to the archive
     void addCustomer(const Customer& customer);
-    // Method to input a new customer to the archive
+    // Method to input a new customer to the archive from user input
     void addNewCustomer();
     // Method to display all customers in the archive
     void displayAllCustomers() const;
     // Method to display a customer by ID
     void displayCustomerById(int id) const;
+    // Method to display a customer by ID from user input
     void displayCustomerById() const;
 };
 
