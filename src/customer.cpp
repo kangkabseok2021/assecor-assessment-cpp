@@ -14,34 +14,45 @@ void Customer::displayInfo() const {
 };
 
 // Method to add a customer to the archive
-void CustomerArchive::addCustomer(const Customer& customer) {
+void CustomerArchive::addCustomer_(const Customer& customer) {
     customers_[customer.getId()] = customer;
 };
 
+// Method to add a customer to the archive
+void CustomerArchive::addCustomer(const Customer& customer) {
+    addCustomer_(customer);
+};
+
+// Checking existence of a given id
+bool CustomerArchive::checkExistID_(int id) const {
+    return customers_.count(id) > 0;
+};
+
 // Method to display all customers in the archive
-void CustomerArchive::displayAllCustomers() const {
-    if(customers_.empty()) {
+void CustomerArchive::displayAllCustomers() {
+    std::vector<Customer> customers = getCustomerAll_();
+    if(customers.empty()) {
         std::cout << "(Keine Kunden)\n";
     }
     else { 
-        for (const auto& customer : customers_) {
-            customer.second.displayInfo();
+        for (const auto& customer : customers) {
+            customer.displayInfo();
         }
     }
 };
 
 // Method to display a customer by ID
-void CustomerArchive::displayCustomerById(int id) const {
-    auto it = customers_.find(id);
-    if (it != customers_.end()) {
-        it->second.displayInfo();
+void CustomerArchive::displayCustomerById(int id) {
+    if (checkExistID_(id)) {
+        Customer customer = getCustomerById_(id);
+        customer.displayInfo();
     } else {
         std::cout << "Customer with ID " << id << " not found.\n";
     }
 };
 
 // Method to input a new customer to the archive from user input
-void CustomerArchive::displayCustomerById() const {
+void CustomerArchive::displayCustomerById() {
     int id;
     std::cout<< "Enter Customer ID (integer):";
     while(!(std::cin >> id)) {
@@ -67,7 +78,7 @@ void CustomerArchive::addNewCustomer() {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     //Check if ID already exists
-    if(customers_.count(id)) {
+    if(checkExistID_(id)) {
         std::cout << "Error: Customer with ID : "<< id << " already exists. Aborting. \n";
         return;
     }
@@ -93,3 +104,16 @@ void CustomerArchive::addNewCustomer() {
     
     addCustomer(customer);
 };
+
+// get Customer of a given id
+Customer CustomerArchive::getCustomerById_(int id) const {
+    return customers_.at(id);
+};
+
+// get all Customers
+std::vector<Customer> CustomerArchive::getCustomerAll_() const{
+    std::vector<Customer> customers;
+    for(auto it:customers_) customers.push_back(it.second);
+    return customers;
+};
+

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <limits>
 #include <map>
+#include <vector>
 
 #define	COLOR_BLUE      1
 #define COLOR_GREEN     2
@@ -70,17 +71,26 @@ public:
 class CustomerArchive { 
 private:
     std::map<int, Customer> customers_;
+    // Checking existence of a given id
+    bool checkExistID_(int id) const;
+    // get Customer of a given id
+    Customer getCustomerById_(int id) const;
+    // get all Customers
+    std::vector<Customer> getCustomerAll_() const;
+    // Method to add a customer to the archive
+    void addCustomer_(const Customer& customer);
+
 public:
     // Method to add a customer to the archive
     void addCustomer(const Customer& customer);
     // Method to input a new customer to the archive from user input
     void addNewCustomer();
     // Method to display all customers in the archive
-    void displayAllCustomers() const;
+    void displayAllCustomers();
     // Method to display a customer by ID
-    void displayCustomerById(int id) const;
+    void displayCustomerById(int id);
     // Method to display a customer by ID from user input
-    void displayCustomerById() const;
+    void displayCustomerById();
 };
 
 #endif // ifndef CUSTOMER_H
