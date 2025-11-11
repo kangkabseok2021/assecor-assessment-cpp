@@ -5,12 +5,7 @@ project(LibraryCustomer)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
-find_package(GTest REQUIRED)
-
-# Include directories
-# include_directories(
-#     ${CMAKE_CURRENT_SOURCE_DIR}/include
-# )
+find_package(GTest REQUIRED) // For GoogleTest
 
 add_library(customer_lib
     src/customer.cpp
@@ -29,6 +24,6 @@ add_executable(CustomerData ${SOURCES})
 
 target_link_libraries(CustomerData customer_lib)
 
-enable_testing()
+enable_testing()  // For GoogleTest
 
-add_subdirectory(test)
+add_subdirectory(test) // For GoogleTest

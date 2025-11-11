@@ -14,16 +14,6 @@ int main() {
     archive.addCustomer(customer1);
     archive.addCustomer(customer2);
 
-    // Display all customers
-    // archive.displayAllCustomers();
-
-    // Display a specific customer by ID
-    //  archive.displayCustomerById(1);
-    // archive.displayCustomerById(3);  // Non-existent ID
-    
-    //  archive.addNewCustomer();
-    //  archive.displayAllCustomers();
-
     int choice;
 
     do {
