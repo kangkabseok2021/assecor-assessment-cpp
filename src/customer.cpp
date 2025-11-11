@@ -15,7 +15,7 @@ void Customer::displayInfo() const {
 
 // Method to add a customer to the archive
 void CustomerArchive::addCustomer_(const Customer& customer) {
-    customers_[customer.getId()] = customer;
+    customers_.emplace(customer.getId(), customer);
 };
 
 // Method to add a customer to the archive

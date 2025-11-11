@@ -26,17 +26,6 @@ struct _CUSTOMER {
 
 typedef struct _CUSTOMER CUSTOMER;
 
-// Map for color names
-const std::map<int, std::string> ColorNames = {
-    {COLOR_BLUE, "Blue"},
-    {COLOR_GREEN, "Green"},
-    {COLOR_VIOLET, "Violet"},
-    {COLOR_RED, "Red"},
-    {COLOR_YELLOW, "Yellow"},
-    {COLOR_TURQUOISE, "Turquoise"},
-    {COLOR_WHITE, "White"}
-};
-
 class Customer {
 private:
     // Member variable (data fields) 
@@ -46,6 +35,17 @@ private:
     std::string zip_code_;
     std::string city_;
     int favorite_color_;
+
+    // Map for color names
+    const std::map<int, std::string> ColorNames = {
+        {COLOR_BLUE, "Blue"},
+        {COLOR_GREEN, "Green"},
+        {COLOR_VIOLET, "Violet"},
+        {COLOR_RED, "Red"},
+        {COLOR_YELLOW, "Yellow"},
+        {COLOR_TURQUOISE, "Turquoise"},
+        {COLOR_WHITE, "White"}
+    };
 
 public:
     // Constructor
