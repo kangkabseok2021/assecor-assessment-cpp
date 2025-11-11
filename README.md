@@ -29,6 +29,8 @@ The Customer class has the following variables and methods:
 
 - member variables in private: `id_`, `first_name_`, `last_name_`, `zip_code_`, `city_`, `favorite_color_`
 
+- display helper map in private: `ColorNames` display color names in string 
+
 - member methods in public: Contructor, Getters and `dispalyInfo()` 
 
 ### CustomerArchive class
