@@ -15,6 +15,9 @@ void Customer::displayInfo() const {
 
 // Method to add a customer to the archive
 void CustomerArchive::addCustomer_(const Customer& customer) {
+    if(checkExistID_(customer.getId())) {
+        customers_.erase(customer.getId());
+    }
     customers_.emplace(customer.getId(), customer);
 };
 
